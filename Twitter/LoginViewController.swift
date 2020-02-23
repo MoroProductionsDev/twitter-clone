@@ -16,9 +16,10 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func LoginEvent(_ sender: Any) {
-        print("Logged!")
+    @IBAction func loginEvent(_ sender: Any) {
+        
     }
+    
     
     
 

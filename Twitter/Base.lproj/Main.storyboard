@@ -30,7 +30,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="LoginEvent:" destination="8UR-qF-Xwa" eventType="touchUpInside" id="OT0-us-POl"/>
+                                    <action selector="loginEvent:" destination="8UR-qF-Xwa" eventType="touchUpInside" id="XVy-4u-nkm"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="aQk-ap-GHw">
