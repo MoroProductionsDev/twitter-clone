@@ -9,20 +9,23 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    let TWITTER_URL = "https://api.twitter.com/oauth/request_token"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-    @IBAction func loginEvent(_ sender: Any) {
-        
-    }
-    
-    
-    
 
+    @IBAction func loginEvent(_ sender: Any) {
+        TwitterAPICaller.client?.login(url: TWITTER_URL,
+           success: {
+            self.performSegue(withIdentifier: "login_homepage", sender: self)
+        },
+           failure: { (Error) in
+            print("Could not logged in")
+        })
+    }
     /*
     // MARK: - Navigation
 
@@ -30,7 +33,7 @@ class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
+     }
     */
 
 }

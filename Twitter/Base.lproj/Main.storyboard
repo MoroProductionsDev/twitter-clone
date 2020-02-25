@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="QQ8-8K-vl2">
             <objects>
-                <viewController id="nj6-9t-f5f" sceneMemberID="viewController">
+                <viewController id="nj6-9t-f5f" customClass="LoginViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IAe-83-LAr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginEvent:" destination="8UR-qF-Xwa" eventType="touchUpInside" id="XVy-4u-nkm"/>
+                                    <action selector="loginEvent:" destination="nj6-9t-f5f" eventType="touchUpInside" id="0eG-uf-PfB"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="aQk-ap-GHw">
@@ -51,7 +51,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOm-mm-vwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="8UR-qF-Xwa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-167.19999999999999" y="68.815592203898049"/>
         </scene>
