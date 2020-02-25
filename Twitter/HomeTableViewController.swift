@@ -23,6 +23,9 @@ class HomeTableViewController: UITableViewController {
         // logout from the API
         TwitterAPICaller.client?.logout()
         
+        // Saved the state, so the user stays logged out
+        UserDefaults.standard.set(false, forKey: "authentication")
+        
         // Go back to login page
         self.dismiss(animated: true, completion: nil)
     }

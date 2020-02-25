@@ -19,10 +19,21 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (UserDefaults.standard.bool(forKey: "authentication") == true) {
+            // redirect to the homepage
+            self.performSegue(withIdentifier: "login_homepage", sender: self)
+        }
+    }
 
     @IBAction func loginEvent(_ sender: Any) {
         TwitterAPICaller.client?.login(url: TWITTER_URL,
            success: {
+            // Saved the state, so the user stays logged in
+            UserDefaults.standard.set(true, forKey: "authentication")
+            
+            // redirect to the homepage
             self.performSegue(withIdentifier: "login_homepage", sender: self)
         },
            failure: { (Error) in
