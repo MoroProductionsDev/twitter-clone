@@ -36,23 +36,37 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="aQk-ap-GHw">
                                 <rect key="frame" x="140.66666666666666" y="201.66666666666663" width="132.99999999999997" height="133"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoH-Gv-zYF">
+                                <rect key="frame" x="30" y="344.66666666666669" width="354" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Inb-2d-FkI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aoH-Gv-zYF" firstAttribute="centerX" secondItem="IAe-83-LAr" secondAttribute="centerX" id="1B4-jq-LJo"/>
                             <constraint firstItem="aQk-ap-GHw" firstAttribute="centerY" secondItem="IAe-83-LAr" secondAttribute="centerY" constant="-100" id="39y-N8-XHX"/>
                             <constraint firstItem="aQk-ap-GHw" firstAttribute="centerX" secondItem="IAe-83-LAr" secondAttribute="centerX" id="Bj5-dR-8eI"/>
                             <constraint firstItem="3jY-lM-rOi" firstAttribute="centerY" secondItem="IAe-83-LAr" secondAttribute="centerY" constant="100" id="CIC-f9-xfy"/>
                             <constraint firstItem="3jY-lM-rOi" firstAttribute="centerX" secondItem="IAe-83-LAr" secondAttribute="centerX" id="DPp-pA-uio"/>
+                            <constraint firstItem="ipD-RB-OAV" firstAttribute="trailing" secondItem="aoH-Gv-zYF" secondAttribute="trailing" constant="30" id="ZTh-wz-PFk"/>
+                            <constraint firstItem="aoH-Gv-zYF" firstAttribute="top" secondItem="aQk-ap-GHw" secondAttribute="bottom" constant="10" id="r4m-3m-DkP"/>
+                            <constraint firstItem="aoH-Gv-zYF" firstAttribute="leading" secondItem="ipD-RB-OAV" secondAttribute="leading" constant="30" id="zTb-mF-DBS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ipD-RB-OAV"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="aoH-Gv-zYF" id="52J-dg-igk"/>
                         <segue destination="FMO-7M-DeY" kind="presentation" identifier="login_homepage" id="uax-q1-M3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOm-mm-vwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-167.19999999999999" y="68.815592203898049"/>
+            <point key="canvasLocation" x="-168.11594202898553" y="68.478260869565219"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="WwT-mH-9Hw">
