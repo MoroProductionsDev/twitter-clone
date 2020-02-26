@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
+    let refControl = UIRefreshControl()
     let RESOURCE_URL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
     let PARAMS = ["count" : 10]
     var tweets = [NSDictionary]()
@@ -19,6 +20,10 @@ class HomeTableViewController: UITableViewController {
         
         loadTweets()
         
+        // Pull Request
+        refControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
+        tableView.refreshControl = refControl
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -26,7 +31,7 @@ class HomeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func loadTweets() {
+    @objc func loadTweets() {
         // Call API client and getting the dictionaries
         TwitterAPICaller.client?.getDictionariesRequest(
             url: RESOURCE_URL,
@@ -43,6 +48,8 @@ class HomeTableViewController: UITableViewController {
                 
                 // reloads tableView data
                 self.tableView.reloadData()
+                // End the refreshing cycle
+                self.refControl.endRefreshing()
         }, failure: {(Error) in
             print("ERROR: Could not retrieve tweets")
         })
