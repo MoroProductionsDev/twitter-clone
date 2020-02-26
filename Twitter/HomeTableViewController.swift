@@ -9,6 +9,17 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
+    let RESOURCE_URL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+    var tweets = [NSDictionary]()
+    var tweetscount : Int
+    
+    func loadTwet() {
+        TwitterAPICaller?.getDictionariesRequest(
+            url: ,
+            parameters: ,
+            success: ,
+            failure: ,)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +44,9 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        
-        cell.userNameLabel.text = "Raul"
-        cell.tweetContentLabel.text = "This is a simple content display for illustration purposes"
+        let user = tweets[indexPath.row]["user"] as! NSDictionary
+        cell.userNameLabel.text = user["name"] as? String
+        cell.tweetContentLabel.text = tweets[indexPath.row]["text"] as? String
         
         return cell
     }
