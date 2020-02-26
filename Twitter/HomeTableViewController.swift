@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +32,11 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tweet cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        
+        cell.userNameLabel.text = "Raul"
+        cell.tweetContentLabel.text = "This is a simple content display for illustration purposes"
+        
         return cell
     }
     
