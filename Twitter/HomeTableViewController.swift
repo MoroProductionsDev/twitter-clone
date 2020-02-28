@@ -125,6 +125,9 @@ class HomeTableViewController: UITableViewController {
             cell.avatarImageView.image = UIImage(data: imageData)
         }
         
+        // toggle the favorited icon and display base on the API returned value
+        cell.toggleFavoritedState(tweets[indexPath.row]["favorited"] as! Bool)
+        
         return cell
     }
     
