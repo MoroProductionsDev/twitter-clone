@@ -98,4 +98,17 @@ class TwitterAPICaller: BDBOAuth1SessionManager {
             failure(error)
         })
     }
+    
+    func retweet(tweetId: Int, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        // API URL for destruction
+        // :id means that it has to be replaced with a variable
+        let RESOURCE_URL_RETWEET = "https://api.twitter.com/1.1/statuses/retweet/\(tweetId).json"
+        
+        TwitterAPICaller.client?.post(RESOURCE_URL_RETWEET, parameters: ["id" : tweetId], progress: nil,
+                                      success: { (task: URLSessionDataTask, response: Any? ) in
+                                        success()
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        })
+    }
 }

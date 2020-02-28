@@ -130,6 +130,9 @@ class HomeTableViewController: UITableViewController {
         // Set id to cell
         cell.tweetId = tweets[indexPath.row]["id"] as! Int
         
+        // get the retweet state
+        cell.toggleRetweetState(tweets[indexPath.row]["retweeted"] as! Bool)
+        
         return cell
     }
     

@@ -14,7 +14,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetContentLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var retweetButton: UIButton!
-    var favorited : Bool = false
+    var hasFavorited : Bool = false
     var tweetId : Int = -999
     
     override func awakeFromNib() {
@@ -30,17 +30,27 @@ class TweetCell: UITableViewCell {
     }
     
     func toggleFavoritedState(_ isFavorited : Bool) {
-        self.favorited = isFavorited
-        if (self.favorited) {
+        self.hasFavorited = !hasFavorited
+        if (self.hasFavorited) {
             favoriteButton.setImage(UIImage(named: "favor-icon-red"), for: UIControl.State.normal)
         } else {
             favoriteButton.setImage(UIImage(named: "favor-icon"), for: UIControl.State.normal)
         }
     }
+    
+    func toggleRetweetState(_ isRetweeted : Bool) {
+        if (isRetweeted) {
+            self.retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: UIControl.State.normal)
+            self.retweetButton.isEnabled = false
+        } else {
+            self.retweetButton.setImage(UIImage(named: "retweet-icon"), for: UIControl.State.normal)
+            self.retweetButton.isEnabled = true
+        }
+    }
 
     @IBAction func favoriteTweetEvent(_ sender: Any) {
-        favorited = !favorited
-        if(favorited) {
+        let toBeFavorited = !hasFavorited
+        if (toBeFavorited) {
             TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId,
            success: {self.toggleFavoritedState(true)},
            failure: {(error) in
@@ -56,6 +66,10 @@ class TweetCell: UITableViewCell {
     }
     
     @IBAction func retweetEvent(_ sender: Any) {
-        
+        TwitterAPICaller.client?.retweet(tweetId: tweetId,
+            success: {self.toggleRetweetState(true)},
+            failure: {(error) in
+                print("Retweet API call did not succeed: \(error)")
+        })
     }
  }
