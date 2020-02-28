@@ -19,7 +19,7 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loadTweets()
+        loadTweets()
         
         // Pull Request
         refControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)

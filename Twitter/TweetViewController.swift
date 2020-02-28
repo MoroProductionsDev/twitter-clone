@@ -15,6 +15,7 @@ class TweetViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.tweetTextView.becomeFirstResponder()        // will display the keyboard in the textview
     }
     
     @IBAction func cancelEvent(_ sender: Any) {
