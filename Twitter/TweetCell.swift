@@ -30,7 +30,7 @@ class TweetCell: UITableViewCell {
     }
     
     func toggleFavoritedState(_ isFavorited : Bool) {
-        self.hasFavorited = !hasFavorited
+        hasFavorited = isFavorited
         if (self.hasFavorited) {
             favoriteButton.setImage(UIImage(named: "favor-icon-red"), for: UIControl.State.normal)
         } else {
