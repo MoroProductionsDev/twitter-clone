@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
+    @IBOutlet var tweetTableView: UITableView!
     let refControl = UIRefreshControl()
     let RESOURCE_URL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
     let CELLCOUNT : Int = 20
@@ -18,12 +19,14 @@ class HomeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadTweets()
         
         // Pull Request
         refControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
-        tableView.refreshControl = refControl
+        self.tweetTableView.refreshControl = refControl     // refresh table view
+        self.tweetTableView.rowHeight = UITableView.automaticDimension
+        self.tweetTableView.estimatedRowHeight = 150
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
