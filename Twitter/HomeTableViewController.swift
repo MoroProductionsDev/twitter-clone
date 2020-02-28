@@ -13,7 +13,6 @@ class HomeTableViewController: UITableViewController {
     let refControl = UIRefreshControl()
     let RESOURCE_URL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
     let CELLCOUNT : Int = 20
-    
     var tweets = [NSDictionary]()
     var tweetscount : Int = 0
     
@@ -127,6 +126,9 @@ class HomeTableViewController: UITableViewController {
         
         // toggle the favorited icon and display base on the API returned value
         cell.toggleFavoritedState(tweets[indexPath.row]["favorited"] as! Bool)
+        
+        // Set id to cell
+        cell.tweetId = tweets[indexPath.row]["id"] as! Int
         
         return cell
     }

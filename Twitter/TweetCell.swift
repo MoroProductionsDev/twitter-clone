@@ -14,8 +14,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetContentLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var retweetButton: UIButton!
-    
     var favorited : Bool = false
+    var tweetId : Int = -999
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +39,19 @@ class TweetCell: UITableViewCell {
     }
 
     @IBAction func favoriteTweetEvent(_ sender: Any) {
-        
+        if(favorited) {
+            TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId,
+           success: {self.toggleFavoritedState(false)},
+           failure: {(error) in
+            print("Favorite API call did not succeed: \(error)")
+            })
+        } else {
+            TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId,
+           success: {self.toggleFavoritedState(true)},
+           failure: {(error) in
+            print("Unfavorite API call did not succeed: \(error)")
+            })
+        }
     }
     
     @IBAction func retweetEvent(_ sender: Any) {
