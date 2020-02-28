@@ -19,7 +19,7 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadTweets()
+        self.loadTweets()
         
         // Pull Request
         refControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
@@ -30,6 +30,12 @@ class HomeTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    // Always refresh the page when the page reappear again.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadTweets()
     }
     
     @objc func loadTweets() {

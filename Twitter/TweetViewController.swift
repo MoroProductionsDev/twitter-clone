@@ -9,7 +9,8 @@
 import UIKit
 
 class TweetViewController: UIViewController {
-
+    @IBOutlet weak var tweetTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +22,18 @@ class TweetViewController: UIViewController {
     }
     
     @IBAction func tweetEvent(_ sender: Any) {
-        
+        // check if it is not empty
+        if (!tweetTextView.text.isEmpty) {
+            TwitterAPICaller.client?.postTweet(tweetString: tweetTextView.text,
+            success: {
+                self.dismiss(animated: true, completion: nil)   // dismiss the page
+                
+            },
+            failure: {(Error) in
+                print("Error posting tweet \(Error)")           // print the error
+                self.dismiss(animated: true, completion: nil)   // dismiss the page
+            })
+        }
     }
     /*
     // MARK: - Navigation
