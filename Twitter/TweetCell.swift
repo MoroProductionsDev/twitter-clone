@@ -39,15 +39,16 @@ class TweetCell: UITableViewCell {
     }
 
     @IBAction func favoriteTweetEvent(_ sender: Any) {
+        favorited = !favorited
         if(favorited) {
             TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId,
-           success: {self.toggleFavoritedState(false)},
+           success: {self.toggleFavoritedState(true)},
            failure: {(error) in
             print("Favorite API call did not succeed: \(error)")
             })
         } else {
-            TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId,
-           success: {self.toggleFavoritedState(true)},
+            TwitterAPICaller.client?.unfavoriteTweet(tweetId: tweetId,
+           success: {self.toggleFavoritedState(false)},
            failure: {(error) in
             print("Unfavorite API call did not succeed: \(error)")
             })
